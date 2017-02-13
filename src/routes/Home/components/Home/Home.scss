@@ -1,9 +1,19 @@
-@import 'base';
-.container {
-  @extend .flex-row-center;
-  padding-top: 4rem;
+.div-container {
+  margin: 0 5px 0 5px;
 }
 .container-1 {
-  @extend .flex-row-center;
-  padding-top: 20rem;
+  display: flex;
+  height: 500px;
+  width: 1512px;
+  flex-direction: row;
+  border: 1px solid black;
+  flex-flow: row wrap;
+}
+
+.item{
+  height: 307.2px;
+  width: 211.2px;
+  margin: 5px;
+  flex-grow: 1;
+  border: 3px solid blue;
 }

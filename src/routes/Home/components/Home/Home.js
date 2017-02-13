@@ -9,10 +9,28 @@ export default class Home extends Component {
   render () {
     return (
       <div>
-        <div className={classes['container']} style={{ color: Theme.palette.primary2Color }}>
-          Yolo!
+        <div className={classes['div-container']}>
+          <div className={classes['container-1']} >
+            <div className={classes['item']}>
+                hahah1
+            </div>
+            <div className={classes['item']}>
+                hahah2
+            </div>
+            <div className={classes['item']}>
+                hahah3
+            </div>
+            <div className={classes['item']}>
+                hahah4
+            </div>
+            <div className={classes['item']}>
+                hahah5
+            </div>
+            <div className={classes['item']}>
+                hahah6
+            </div>
+          </div>
         </div>
-        <div className={classes['container-1']} >hahaha!</div>
       </div>
     )
   }
