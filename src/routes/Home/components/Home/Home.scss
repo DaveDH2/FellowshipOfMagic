@@ -10,10 +10,19 @@
   flex-flow: row wrap;
 }
 
-.item{
-  height: 307.2px;
-  width: 211.2px;
-  margin: 5px;
+.item {
+  height: 307px;
+  width: 211px;
+  margin: 5px 5px 5px 5px;
   flex-grow: 1;
-  border: 3px solid blue;
+  border: 2px solid blue;
+  padding: 5px 5px;
+}
+
+
+.card-container {
+  height: 327px;
+  width: 231px;
+  margin: 5px 5px;
+  border: 2px solid black;
 }
