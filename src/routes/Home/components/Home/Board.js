@@ -1,30 +1,37 @@
+'use strict'
+
 import React, { Component, PropTypes } from 'react' // eslint-disable-line
 
 // Components
 import classes from './Home.scss'
+import { DragDropContext } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 import Card from './Card.js'
-import CardContainer from './CardContainer'
+import BoardCardContainer from './BoardCardContainer'
 
-var Board = React.createClass({
+@DragDropContext(HTML5Backend)
+export default class Board extends Component {
 
-  renderCards: function (x) {
-
-    var cardItemProp = this.props.cardPosition[0];
-    var colorOfBg = x === cardItemProp ? 'green' : 'white';
-    var cardItem = x === cardItemProp ? <Card /> : null;
+  renderCardContainer(i) {
     return (
-      <div key={x}>
-        <CardContainer colorOfBg={colorOfBg}>
-          {cardItem}
-        </CardContainer>
+      <div key={i}>
+        <BoardCardContainer x={x}>
+          {this.renderCard(x)}
+        </BoardCardContainer>
       </div>
     )
-  },
+  }
 
-  render: function() {
+  renderCards(x) {
+    const [cardPosition] = this.props.cardPosition[0];
+    const isCardHere = x === cardPosition;
+    return isCardHere ? <Card /> : null
+  }
+
+  render() {
     var cardItems = [];
     for (let i = 0; i < 6; i++) {
-     cardItems.push(this.renderCards(i));
+     cardItems.push(this.renderCardContainer(i));
     }
     return (
        <div>
@@ -36,9 +43,9 @@ var Board = React.createClass({
        </div>
     )
   }
-});
+};
 
-module.exports = Board;
+
 // }) {
 //   renderCards(i) {
 //     return (

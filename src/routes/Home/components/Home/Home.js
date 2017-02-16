@@ -1,3 +1,5 @@
+'use strict'
+
 import React, { Component } from 'react' // eslint-disable-line
 
 // Components
@@ -7,7 +9,26 @@ import ReactDOM from 'react-dom'
 import { observe } from './Game';
 
 export default class Home extends Component {
-  return() {
+  constructor(props) {
+    super(props);
+    this.unobserve = observe(this.handleChange.bind(this));
+  }
+
+  handleChange(cardPosition) {
+    const nextState = { cardPosition };
+    if (this.state) {
+      this.setState(nextState);
+    } else {
+      this.state = nextState;
+    }
+  }
+
+  componentWillUnmount() {
+    this.unobserve();
+  }
+
+  render() {
+    const { cardPosition } = this.state;
     return (
       <div>
         <Board cardPosition={cardPosition} />
@@ -15,20 +36,3 @@ export default class Home extends Component {
     )
   }
 }
-
-const rootEl = document.getElementById('root2');
-
-observe(cardPosition =>
-  ReactDOM.render(
-    <Board cardPosition={cardPosition} />,
-    rootEl
-  )
-);
-
-  // render () {
-  //   return (
-  //     observe(cardPosition => {
-  //       <Board cardPosition={cardPosition} />
-  //     })
-  //   )
-  // }
